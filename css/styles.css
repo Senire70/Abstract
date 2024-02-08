@@ -29,6 +29,7 @@
                             width: 130px;
                             transform: translateY(7px);
                         }
+
                         img:hover {
                             opacity: 0.5;
                             transition: 300ms;
@@ -94,78 +95,135 @@
                     transition: 400ms;
                 }
             }
-        }
 
-        .header-main {
-            width: 100%;
-            display: grid;
-            place-content: center;
-            background-color: #dadbf1;
-            height: 24.8rem;
+            .header-main {
+                width: 100%;
+                display: grid;
+                place-content: center;
+                background-color: #dadbf1;
+                height: 24.8rem;
 
-            .element-container {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                height: 205px;
-                width: 45rem;
+                .element-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 205px;
+                    width: 45rem;
 
-                h1 {
-                    font-size: 73px;
-                    font-weight: 200;
-                    text-align: center;
-                    margin: none;
-                    padding: none;
-                    transform: translate(7px, -2px);
-                }
-                div {
-                    position: relative;
-                    display: grid;
-                    width: 100%;
-                    transform: translateY(-15px);
+                    h1 {
+                        font-size: 73px;
+                        font-weight: 200;
+                        text-align: center;
+                        margin: none;
+                        padding: none;
+                        transform: translate(7px, -2px);
+                    }
 
-
-                    input {
+                    div {
+                        position: relative;
+                        display: grid;
                         width: 100%;
-                        height: 65px;
-                        border: 1px solid;
-                        border-radius: 5px;
-                        font-size: 18px;
-                        transition: 100ms;
-                        padding-left: 18px;
-                    }
-                    
-                    ion-icon {
-                        font-size: 26px;
-                        position: absolute;
-                        align-self: center;
-                        justify-self: end;
-                        margin-right: 15px;
-                        transition: 100ms;
-                        transform: scaleX(1.5);
-                    }
-                }
+                        transform: translateY(-15px);
 
-                div:hover {
-                    * {
-                        transition: 100ms;
+
+                        input {
+                            width: 100%;
+                            height: 65px;
+                            border: 1px solid;
+                            border-radius: 5px;
+                            font-size: 18px;
+                            transition: 100ms;
+                            padding-left: 18px;
+                        }
+
+                        ion-icon {
+                            font-size: 26px;
+                            position: absolute;
+                            align-self: center;
+                            justify-self: end;
+                            margin-right: 15px;
+                            transition: 100ms;
+                            transform: scaleX(1.5);
+                        }
                     }
-                    input {
+
+                    div:hover {
+                        * {
+                            transition: 100ms;
+                        }
+
+                        input {
+                            border-color: blue;
+                        }
+
+                        ion-icon {
+                            color: blue;
+                        }
+                    }
+
+                    input:focus {
                         border-color: blue;
+                        outline: none;
                     }
 
-                    ion-icon {
-                        color: blue;
-                    }
                 }
-                input:focus {
-                    border-color: blue;
-                    outline: none;
-                }
-
             }
         }
 
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            width: 79%;
+            margin: 175px auto 30px;
+            
+            .item {
+                /* width: 50%; */
+                flex: 1 1 30rem;
+                min-width: 33%;
+                max-width: 100%;
+                display: grid;
+                grid-template-columns: 2fr 6fr 0.8fr;
+                margin-bottom: 100px;
+
+                .img {
+                    grid-column: 1;
+                    margin-top: 5px;
+
+                    img {
+                        width: 85px;
+                    }
+                }
+
+                .content {
+                    grid-column: 2;
+
+                    h2 {
+                        font-size: 23px;
+                        font-weight: 900;
+                    }
+
+                    p {
+                        margin: 20px 0;
+                        font-size: 24px;
+                    }
+
+                    a {
+                        font-size: 18px;
+                        color: blue;
+
+                        span {
+                            font-size: 2em;
+                            font-weight: 100;
+                        }
+                    }
+
+                    a:hover {
+                        border-bottom: 2px solid blue;
+                    }
+
+                }
+            }
+        }
     }
 
 }
