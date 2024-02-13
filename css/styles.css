@@ -23,6 +23,12 @@
                 .element-container:first-child {
                     margin-left: 7%;
 
+                    a {
+                        flex: 1 1 130px;
+                        max-width: 100%;
+                        min-width: 100px;
+                    }
+
                     .element-1 {
                         position: relative;
 
@@ -61,8 +67,12 @@
 
             div:last-child {
                 margin-right: 8.3%;
+                display: flex;
+                flex-wrap: wrap;
 
                 button {
+                    flex: 1 1 auto;
+                    min-width: 130px;
                     height: 3rem;
                     color: white;
                     border: none;
@@ -353,6 +363,8 @@
         }
 
         .help-window {
+            scrollbar-width: none;
+            /* overflow-y: scroll; */
             position: fixed;
             bottom: 15px;
             right: 15px;
@@ -397,21 +409,25 @@
                 }
 
                 #close-window:hover {
+                    transition: 100ms;
                     background-color: rgba(255, 255, 255, 0.45);
                 }
 
             }
 
             .help-window-main {
+                overflow-y: scroll;
+                scrollbar-width: none;
                 grid-row: 2;
                 width: 90%;
                 margin: 0 auto;
                 display: flex;
                 padding-top: 20px;
+                box-sizing: border-box;
 
                 .container {
                     width: 20%;
-                    margin: 30px auto;
+                    margin: 35px auto;
 
                     .content {
                         width: 85%;
@@ -439,8 +455,10 @@
                 .message-container {
 
                     display: flex;
-                    flex-flow: wrap column;
+                    flex-flow: nowrap column;
                     position: relative;
+                    scrollbar-width: none;
+                    box-sizing: border-box;
 
                     * {
                         transition: none;
@@ -448,10 +466,13 @@
 
                     span {
                         display: inline-block;
+                        box-sizing: border-box;
+                        /* max-width: 10rem; */
                         margin-bottom: 10px;
                         padding: 8px 15px;
                         border-radius: 20px;
                         font-size: 14px;
+                        height: auto;
 
                     }
 
@@ -464,6 +485,7 @@
                         .bot-message {
                             max-width: 75.2%;
 
+
                             span {
                                 background-color: rgba(128, 128, 128, 0.041);
                             }
@@ -471,17 +493,41 @@
 
                     }
 
-                    .user-message {
-                        max-width: 75.2%;
+                    .user {
+                        width: 276px;
+                        display: flex;
+                        justify-content: end;
+                        flex-flow: column wrap;
+                        box-sizing: content-box;
 
-                        div {
-                            text-align: right;
-                            color: white
+                        * {
+                            transition: 500ms;
                         }
 
-                        span {
-                            background-color: #4c5fd5;
-                            text-align: right;
+                        .user-message {
+                            max-width: 75.2%;
+                            display: flex;
+                            align-self: end;
+                            flex-flow: wrap column;
+                            align-items: end;
+
+                            span {
+                                overflow-wrap: break-word;
+                                display: inline-block;
+                                box-sizing: border-box;
+                                /* max-width: 10rem; */
+                                margin-bottom: 10px;
+                                padding: 8px 15px;
+                                border-radius: 20px;
+                                font-size: 14px;
+                                height: auto;
+                                background-color: #4c5fd5;
+                                color: white
+                            }
+
+                            span:hover {
+                                background-color: #4c5ed5c7;
+                            }
                         }
                     }
 
@@ -489,6 +535,7 @@
                         align-self: end;
                         position: absolute;
                         bottom: 15px;
+                        transition: 500ms;
 
                         span {
                             border: 1px solid #4c5fd5;
@@ -551,4 +598,8 @@
 .descend {
     position: absolute;
     bottom: -1000px !important;
+}
+
+.descend-emoji {
+    transform: translateY(50px);
 }

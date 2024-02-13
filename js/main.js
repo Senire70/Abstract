@@ -65,16 +65,18 @@ function createHelpWindow() {
     botMessageContainer.classList.add("bot-message-container");
 
     //          4*
-    let userMessage = document.createElement("div");
-    userMessage.classList.add("user-message");
+    let user = document.createElement("div");
+    user.classList.add("user");
 
-    let btnOption = document.createElement("div");
-    btnOption.classList.add("btn-option");
+
 
     //              5*elemento hijo de botMessageContainer
     let botName = document.createElement("div");
     botName.classList.add("bot-name");
     botName.textContent = "Abstract · Bot";
+
+    let btnOption = document.createElement("div");
+    btnOption.classList.add("btn-option", "descend");
 
     //              5*elemento hijo de btnOption
     let span3 = document.createElement("span");
@@ -93,14 +95,34 @@ function createHelpWindow() {
 
     botMessageContainer.appendChild(botName);
 
-    botMessage.appendChild(span1);
-    botMessage.appendChild(span2);
     botMessageContainer.appendChild(botMessage);
     messageContainer.appendChild(botMessageContainer);
 
-    messageContainer.appendChild(userMessage);
+    setTimeout(() => {
+        botMessage.appendChild(span1);
 
-    btnOption.appendChild(span3);
+    },
+        1000);
+
+    setTimeout(() => {
+        botMessage.appendChild(span2);
+        container1.classList.add("descend-emoji");
+
+    },
+        1500);
+
+    setTimeout(() => {
+        btnOption.appendChild(span3);
+    },
+        1500);
+
+    setTimeout(() => {
+        btnOption.classList.remove("descend");
+    },
+        2000);
+
+    messageContainer.appendChild(user);
+
     messageContainer.appendChild(btnOption);
 
     helpWindowMain.appendChild(messageContainer)
@@ -132,9 +154,45 @@ function createHelpWindow() {
         }, 100);
     });
 
+    btnOption.addEventListener("click", addMessage);
+    myInput.addEventListener("keydown", addMessage);
 
 
+    function addMessage(event) {
+        let o = event.target.textContent;
+        let v = event.target.value;
+        if (o === "Get in touch") {
+            let span5 = document.createElement("span");
+            span5.textContent = o;
 
+            let userMessage = document.createElement("div");
+            userMessage.classList.add("user-message");
 
-}
+            userMessage.appendChild(span5);
+            user.appendChild(userMessage);
+
+            btnOption.remove();
+
+        } else if (event.key === "Enter") {
+            if (v === "" || v === " ") {
+
+            } else {
+                let span5 = document.createElement("span");
+                span5.textContent = v;
+
+                let userMessage = document.createElement("div");
+                userMessage.classList.add("user-message");
+
+                userMessage.appendChild(span5);
+                user.appendChild(userMessage);
+
+                event.target.value = "";
+                btnOption.classList.add("disable");
+            }
+        }
+
+    };
+
+    myInput.focus();
+};
 
